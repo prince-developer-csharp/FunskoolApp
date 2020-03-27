@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="495a7c3337be4c468c913f82701e500f" Name="Diagram1">
+        <EntityTypeShape EntityType="FunskoolDbModel.Admin" Width="1.5" PointX="6.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FunskoolDbModel.Company" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FunskoolDbModel.ManufacturePlant" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FunskoolDbModel.ToyCategory" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FunskoolDbModel.Toy" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="FunskoolDbModel.FK__Manufactu__Compa__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="FunskoolDbModel.FK__Toys__PlantId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="FunskoolDbModel.FK__Toys__CategoryId__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FunskoolDbModel.user" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FunskoolDbModel.orderDetail" Width="1.5" PointX="12.25" PointY="2.625" />
+        <EntityTypeShape EntityType="FunskoolDbModel.Order" Width="1.5" PointX="10" PointY="4.375" />
+        <EntityTypeShape EntityType="FunskoolDbModel.PlaceOrder" Width="1.5" PointX="12.25" PointY="6.375" />
+        <EntityTypeShape EntityType="FunskoolDbModel.ShippingOrder" Width="1.5" PointX="10" PointY="7.375" />
+        <EntityTypeShape EntityType="FunskoolDbModel.sysdiagram" Width="1.5" PointX="0.75" PointY="7.75" />
+        <AssociationConnector Association="FunskoolDbModel.FK__orderDeta__Order__74AE54BC" />
+        <AssociationConnector Association="FunskoolDbModel.FK__orderDeta__toyid__73BA3083" />
+        <AssociationConnector Association="FunskoolDbModel.FK__Orders__UserId__5CD6CB2B" />
+        <AssociationConnector Association="FunskoolDbModel.FK__PlaceOrde__Order__7A672E12" />
+        <AssociationConnector Association="FunskoolDbModel.FK__PlaceOrde__Shipp__797309D9" />
+        <EntityTypeShape EntityType="FunskoolDbModel.vGetOrderDetail" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="FunskoolDbModel.View_1" Width="1.5" PointX="5.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

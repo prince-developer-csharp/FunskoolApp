@@ -1,0 +1,761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FunskoolDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyDetail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MobileNumber" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManufacturePlants">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="PlantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocatedPlant" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetail" />
+          </Key>
+          <Property Name="OrderDetail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="toyid" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlaceOrders">
+          <Key>
+            <PropertyRef Name="PlaceOrderId" />
+          </Key>
+          <Property Name="PlaceOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingOrder">
+          <Key>
+            <PropertyRef Name="ShippingId" />
+          </Key>
+          <Property Name="ShippingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mobileNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ToyCategories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToyCategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Toys">
+          <Key>
+            <PropertyRef Name="ToyId" />
+          </Key>
+          <Property Name="ToyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ToyName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="PlantId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FunskoolDb.dbo.vGetOrderDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vGetOrderDetail">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="ToyName" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="mobileNumber" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="LocatedPlant" />
+            <PropertyRef Name="State" />
+            <PropertyRef Name="OrderDetail" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToyName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mobileNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="LocatedPlant" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDetail" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FunskoolDb.dbo.View_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="ToyName" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="mobileNumber" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ToyName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="mobileNumber" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Manufactu__Compa__4BAC3F29">
+          <End Role="Companies" Type="Self.Companies" Multiplicity="1" />
+          <End Role="ManufacturePlants" Type="Self.ManufacturePlants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ManufacturePlants">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orderDeta__Order__74AE54BC">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="orderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orderDeta__toyid__73BA3083">
+          <End Role="Toys" Type="Self.Toys" Multiplicity="1" />
+          <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toys">
+              <PropertyRef Name="ToyId" />
+            </Principal>
+            <Dependent Role="orderDetails">
+              <PropertyRef Name="toyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__5CD6CB2B">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlaceOrde__Order__7A672E12">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="PlaceOrders" Type="Self.PlaceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="PlaceOrders">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlaceOrde__Shipp__797309D9">
+          <End Role="ShippingOrder" Type="Self.ShippingOrder" Multiplicity="1" />
+          <End Role="PlaceOrders" Type="Self.PlaceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingOrder">
+              <PropertyRef Name="ShippingId" />
+            </Principal>
+            <Dependent Role="PlaceOrders">
+              <PropertyRef Name="ShippingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Toys__CategoryId__52593CB8">
+          <End Role="ToyCategories" Type="Self.ToyCategories" Multiplicity="1" />
+          <End Role="Toys" Type="Self.Toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToyCategories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Toys">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Toys__PlantId__5165187F">
+          <End Role="ManufacturePlants" Type="Self.ManufacturePlants" Multiplicity="1" />
+          <End Role="Toys" Type="Self.Toys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturePlants">
+              <PropertyRef Name="PlantId" />
+            </Principal>
+            <Dependent Role="Toys">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FunskoolDbModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManufacturePlants" EntityType="Self.ManufacturePlants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderDetails" EntityType="Self.orderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlaceOrders" EntityType="Self.PlaceOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingOrder" EntityType="Self.ShippingOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToyCategories" EntityType="Self.ToyCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toys" EntityType="Self.Toys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vGetOrderDetail" EntityType="Self.vGetOrderDetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vGetOrderDetail].[name] AS [name], 
+    [vGetOrderDetail].[ToyName] AS [ToyName], 
+    [vGetOrderDetail].[Price] AS [Price], 
+    [vGetOrderDetail].[FullName] AS [FullName], 
+    [vGetOrderDetail].[mobileNumber] AS [mobileNumber], 
+    [vGetOrderDetail].[Address] AS [Address], 
+    [vGetOrderDetail].[LocatedPlant] AS [LocatedPlant], 
+    [vGetOrderDetail].[State] AS [State], 
+    [vGetOrderDetail].[OrderDetail] AS [OrderDetail]
+    FROM [dbo].[vGetOrderDetail] AS [vGetOrderDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[name] AS [name], 
+    [View_1].[ToyName] AS [ToyName], 
+    [View_1].[Price] AS [Price], 
+    [View_1].[FullName] AS [FullName], 
+    [View_1].[mobileNumber] AS [mobileNumber], 
+    [View_1].[Address] AS [Address]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Manufactu__Compa__4BAC3F29" Association="Self.FK__Manufactu__Compa__4BAC3F29">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="ManufacturePlants" EntitySet="ManufacturePlants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orderDeta__Order__74AE54BC" Association="Self.FK__orderDeta__Order__74AE54BC">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="orderDetails" EntitySet="orderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orderDeta__toyid__73BA3083" Association="Self.FK__orderDeta__toyid__73BA3083">
+            <End Role="Toys" EntitySet="Toys" />
+            <End Role="orderDetails" EntitySet="orderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__5CD6CB2B" Association="Self.FK__Orders__UserId__5CD6CB2B">
+            <End Role="users" EntitySet="users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlaceOrde__Order__7A672E12" Association="Self.FK__PlaceOrde__Order__7A672E12">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="PlaceOrders" EntitySet="PlaceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlaceOrde__Shipp__797309D9" Association="Self.FK__PlaceOrde__Shipp__797309D9">
+            <End Role="ShippingOrder" EntitySet="ShippingOrder" />
+            <End Role="PlaceOrders" EntitySet="PlaceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Toys__CategoryId__52593CB8" Association="Self.FK__Toys__CategoryId__52593CB8">
+            <End Role="ToyCategories" EntitySet="ToyCategories" />
+            <End Role="Toys" EntitySet="Toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Toys__PlantId__5165187F" Association="Self.FK__Toys__PlantId__5165187F">
+            <End Role="ManufacturePlants" EntitySet="ManufacturePlants" />
+            <End Role="Toys" EntitySet="Toys" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FunskoolDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNumber" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ManufacturePlants" Relationship="Self.FK__Manufactu__Compa__4BAC3F29" FromRole="Companies" ToRole="ManufacturePlants" />
+        </EntityType>
+        <EntityType Name="ManufacturePlant">
+          <Key>
+            <PropertyRef Name="PlantId" />
+          </Key>
+          <Property Name="PlantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocatedPlant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__Manufactu__Compa__4BAC3F29" FromRole="ManufacturePlants" ToRole="Companies" />
+          <NavigationProperty Name="Toys" Relationship="Self.FK__Toys__PlantId__5165187F" FromRole="ManufacturePlants" ToRole="Toys" />
+        </EntityType>
+        <EntityType Name="ToyCategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToyCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Toys" Relationship="Self.FK__Toys__CategoryId__52593CB8" FromRole="ToyCategories" ToRole="Toys" />
+        </EntityType>
+        <EntityType Name="Toy">
+          <Key>
+            <PropertyRef Name="ToyId" />
+          </Key>
+          <Property Name="ToyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ToyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PlantId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ManufacturePlant" Relationship="Self.FK__Toys__PlantId__5165187F" FromRole="Toys" ToRole="ManufacturePlants" />
+          <NavigationProperty Name="ToyCategory" Relationship="Self.FK__Toys__CategoryId__52593CB8" FromRole="Toys" ToRole="ToyCategories" />
+          <NavigationProperty Name="orderDetails" Relationship="FunskoolDbModel.FK__orderDeta__toyid__73BA3083" FromRole="Toy" ToRole="orderDetail" />
+        </EntityType>
+        <Association Name="FK__Manufactu__Compa__4BAC3F29">
+          <End Role="Companies" Type="Self.Company" Multiplicity="1" />
+          <End Role="ManufacturePlants" Type="Self.ManufacturePlant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Companies">
+              <PropertyRef Name="CompanyId" />
+            </Principal>
+            <Dependent Role="ManufacturePlants">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Toys__PlantId__5165187F">
+          <End Role="ManufacturePlants" Type="Self.ManufacturePlant" Multiplicity="1" />
+          <End Role="Toys" Type="Self.Toy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufacturePlants">
+              <PropertyRef Name="PlantId" />
+            </Principal>
+            <Dependent Role="Toys">
+              <PropertyRef Name="PlantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Toys__CategoryId__52593CB8">
+          <End Role="ToyCategories" Type="Self.ToyCategory" Multiplicity="1" />
+          <End Role="Toys" Type="Self.Toy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToyCategories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Toys">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FunskoolDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="ManufacturePlants" EntityType="Self.ManufacturePlant" />
+          <EntitySet Name="ToyCategories" EntityType="Self.ToyCategory" />
+          <EntitySet Name="Toys" EntityType="Self.Toy" />
+          <AssociationSet Name="FK__Manufactu__Compa__4BAC3F29" Association="Self.FK__Manufactu__Compa__4BAC3F29">
+            <End Role="Companies" EntitySet="Companies" />
+            <End Role="ManufacturePlants" EntitySet="ManufacturePlants" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Toys__PlantId__5165187F" Association="Self.FK__Toys__PlantId__5165187F">
+            <End Role="ManufacturePlants" EntitySet="ManufacturePlants" />
+            <End Role="Toys" EntitySet="Toys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Toys__CategoryId__52593CB8" Association="Self.FK__Toys__CategoryId__52593CB8">
+            <End Role="ToyCategories" EntitySet="ToyCategories" />
+            <End Role="Toys" EntitySet="Toys" />
+          </AssociationSet>
+          <EntitySet Name="users" EntityType="FunskoolDbModel.user" />
+          <EntitySet Name="orderDetails" EntityType="FunskoolDbModel.orderDetail" />
+          <EntitySet Name="Orders" EntityType="FunskoolDbModel.Order" />
+          <EntitySet Name="PlaceOrders" EntityType="FunskoolDbModel.PlaceOrder" />
+          <EntitySet Name="ShippingOrders" EntityType="FunskoolDbModel.ShippingOrder" />
+          <EntitySet Name="sysdiagrams" EntityType="FunskoolDbModel.sysdiagram" />
+          <AssociationSet Name="FK__orderDeta__Order__74AE54BC" Association="FunskoolDbModel.FK__orderDeta__Order__74AE54BC">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="orderDetail" EntitySet="orderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__orderDeta__toyid__73BA3083" Association="FunskoolDbModel.FK__orderDeta__toyid__73BA3083">
+            <End Role="Toy" EntitySet="Toys" />
+            <End Role="orderDetail" EntitySet="orderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__5CD6CB2B" Association="FunskoolDbModel.FK__Orders__UserId__5CD6CB2B">
+            <End Role="user" EntitySet="users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlaceOrde__Order__7A672E12" Association="FunskoolDbModel.FK__PlaceOrde__Order__7A672E12">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="PlaceOrder" EntitySet="PlaceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PlaceOrde__Shipp__797309D9" Association="FunskoolDbModel.FK__PlaceOrde__Shipp__797309D9">
+            <End Role="ShippingOrder" EntitySet="ShippingOrders" />
+            <End Role="PlaceOrder" EntitySet="PlaceOrders" />
+          </AssociationSet>
+          <EntitySet Name="vGetOrderDetails" EntityType="FunskoolDbModel.vGetOrderDetail" />
+          <EntitySet Name="View_1" EntityType="FunskoolDbModel.View_1" />
+        </EntityContainer>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="FunskoolDbModel.FK__Orders__UserId__5CD6CB2B" FromRole="user" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="orderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetail1" />
+          </Key>
+          <Property Name="OrderDetail1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="toyid" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="FunskoolDbModel.FK__orderDeta__Order__74AE54BC" FromRole="orderDetail" ToRole="Order" />
+          <NavigationProperty Name="Toy" Relationship="FunskoolDbModel.FK__orderDeta__toyid__73BA3083" FromRole="orderDetail" ToRole="Toy" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="orderDetails" Relationship="FunskoolDbModel.FK__orderDeta__Order__74AE54BC" FromRole="Order" ToRole="orderDetail" />
+          <NavigationProperty Name="user" Relationship="FunskoolDbModel.FK__Orders__UserId__5CD6CB2B" FromRole="Order" ToRole="user" />
+          <NavigationProperty Name="PlaceOrders" Relationship="FunskoolDbModel.FK__PlaceOrde__Order__7A672E12" FromRole="Order" ToRole="PlaceOrder" />
+        </EntityType>
+        <EntityType Name="PlaceOrder">
+          <Key>
+            <PropertyRef Name="PlaceOrderId" />
+          </Key>
+          <Property Name="PlaceOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShippingId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="FunskoolDbModel.FK__PlaceOrde__Order__7A672E12" FromRole="PlaceOrder" ToRole="Order" />
+          <NavigationProperty Name="ShippingOrder" Relationship="FunskoolDbModel.FK__PlaceOrde__Shipp__797309D9" FromRole="PlaceOrder" ToRole="ShippingOrder" />
+        </EntityType>
+        <EntityType Name="ShippingOrder">
+          <Key>
+            <PropertyRef Name="ShippingId" />
+          </Key>
+          <Property Name="ShippingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlaceOrders" Relationship="FunskoolDbModel.FK__PlaceOrde__Shipp__797309D9" FromRole="ShippingOrder" ToRole="PlaceOrder" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__orderDeta__Order__74AE54BC">
+          <End Type="FunskoolDbModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="FunskoolDbModel.orderDetail" Role="orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__orderDeta__toyid__73BA3083">
+          <End Type="FunskoolDbModel.Toy" Role="Toy" Multiplicity="1" />
+          <End Type="FunskoolDbModel.orderDetail" Role="orderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toy">
+              <PropertyRef Name="ToyId" />
+            </Principal>
+            <Dependent Role="orderDetail">
+              <PropertyRef Name="toyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__5CD6CB2B">
+          <End Type="FunskoolDbModel.user" Role="user" Multiplicity="1" />
+          <End Type="FunskoolDbModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlaceOrde__Order__7A672E12">
+          <End Type="FunskoolDbModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="FunskoolDbModel.PlaceOrder" Role="PlaceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="PlaceOrder">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PlaceOrde__Shipp__797309D9">
+          <End Type="FunskoolDbModel.ShippingOrder" Role="ShippingOrder" Multiplicity="1" />
+          <End Type="FunskoolDbModel.PlaceOrder" Role="PlaceOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShippingOrder">
+              <PropertyRef Name="ShippingId" />
+            </Principal>
+            <Dependent Role="PlaceOrder">
+              <PropertyRef Name="ShippingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vGetOrderDetail">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="ToyName" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="mobileNumber" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="LocatedPlant" />
+            <PropertyRef Name="State" />
+            <PropertyRef Name="OrderDetail" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LocatedPlant" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDetail" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="ToyName" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="mobileNumber" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToyName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNumber" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FunskoolDbModelStoreContainer" CdmEntityContainer="FunskoolDbEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="FunskoolDbModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="FunskoolDbModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyDetail" ColumnName="CompanyDetail" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManufacturePlants">
+            <EntityTypeMapping TypeName="FunskoolDbModel.ManufacturePlant">
+              <MappingFragment StoreEntitySet="ManufacturePlants">
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="LocatedPlant" ColumnName="LocatedPlant" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToyCategories">
+            <EntityTypeMapping TypeName="FunskoolDbModel.ToyCategory">
+              <MappingFragment StoreEntitySet="ToyCategories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ToyCategoryName" ColumnName="ToyCategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Toys">
+            <EntityTypeMapping TypeName="FunskoolDbModel.Toy">
+              <MappingFragment StoreEntitySet="Toys">
+                <ScalarProperty Name="ToyId" ColumnName="ToyId" />
+                <ScalarProperty Name="ToyName" ColumnName="ToyName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlantId" ColumnName="PlantId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="FunskoolDbModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderDetails">
+            <EntityTypeMapping TypeName="FunskoolDbModel.orderDetail">
+              <MappingFragment StoreEntitySet="orderDetails">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="toyid" ColumnName="toyid" />
+                <ScalarProperty Name="OrderDetail1" ColumnName="OrderDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="FunskoolDbModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlaceOrders">
+            <EntityTypeMapping TypeName="FunskoolDbModel.PlaceOrder">
+              <MappingFragment StoreEntitySet="PlaceOrders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ShippingId" ColumnName="ShippingId" />
+                <ScalarProperty Name="PlaceOrderId" ColumnName="PlaceOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingOrders">
+            <EntityTypeMapping TypeName="FunskoolDbModel.ShippingOrder">
+              <MappingFragment StoreEntitySet="ShippingOrder">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="ShippingId" ColumnName="ShippingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="FunskoolDbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vGetOrderDetails">
+            <EntityTypeMapping TypeName="FunskoolDbModel.vGetOrderDetail">
+              <MappingFragment StoreEntitySet="vGetOrderDetail">
+                <ScalarProperty Name="OrderDetail" ColumnName="OrderDetail" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="LocatedPlant" ColumnName="LocatedPlant" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ToyName" ColumnName="ToyName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="FunskoolDbModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ToyName" ColumnName="ToyName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
